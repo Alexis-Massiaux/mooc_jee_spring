@@ -20,8 +20,11 @@ public class TestHelper {
 	
 	public static UserDao createUserDao() throws SQLException {
 		if ( dao != null ) return dao;
-		
-		dao = new TestUserDao( "../users.db" );
+		try {
+		dao = new TestUserDao( "C:\\Utilisateurs\\a694672\\Documents\\E-Services\\JEE\\mooc_jee_spring\\week2\\exo201\\WEB-INF\\users.db" );
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return dao;
 	}
 	

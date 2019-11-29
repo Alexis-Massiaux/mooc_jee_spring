@@ -1,6 +1,7 @@
 package user;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,11 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		// TODO : initialize user DAO
-		this.userDao = null;
+		try {
+			this.userDao = new UserDaoSqlite("C:\\Utilisateurs\\a694672\\Documents\\E-Services\\JEE\\mooc_jee_spring\\week2\\exo201\\WEB-INF\\users.db");
+		} catch (SQLException e) {
+			System.out.println("[RegisterServlet] [INIT] : "+e.getMessage());
+		}
 	}
 	
 	@Override
